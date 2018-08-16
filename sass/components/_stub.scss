@@ -1,0 +1,46 @@
+.stub {
+	flex: 1;
+	display: flex;
+	flex-flow: row wrap;
+	align-items: center;
+	position: relative;
+	background-image: url(../images/stub.jpg);
+	background-repeat: no-repeat;
+	background-position: right top;
+	background-size: cover;
+	min-height: calc(100vh - #{$header});
+	&:before {
+		content: "";
+		position: absolute;
+		left: 0px;
+		right: 0px;
+		top: 0px;
+		bottom: 0px;
+		background-color: $bg;
+		opacity: 0.67;
+	}
+	@include max($btablet) {
+		min-height: 1px;
+	}
+	p {
+		position: relative;
+		@include text($fbold, 50px, $white, 60px, none);
+		padding-left: 140px;
+		@include max($bdesktop) {
+			padding-left: 70px;
+		}
+		@include max($btablet) {
+			font-size: 30px;
+			line-height: 40px;
+			padding-left: 30px;
+		}
+		@include max($bmobile) {
+			font-size: 15px;
+			line-height: 20px;
+			padding-left: 15px;
+		}
+		a {
+			text-decoration: underline;
+		}
+	}
+}

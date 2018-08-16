@@ -1,0 +1,63 @@
+.buy {
+	flex: 1;
+	background-color: $white;
+	.img {
+		height: 430px;
+		background-color: #eaecf0;
+		background-repeat: no-repeat;
+		background-position: center center;
+		background-size: auto 100%;
+		margin-bottom: 40px;
+		@include max($bmobile) {
+			height: 180px;
+		}
+	}
+	p {
+		color: $bg;
+	}
+	.btn {
+		@include btn(120px, 27px);
+		margin: 20px auto 50px;
+		@include max($bmobile) {
+			margin: 15px auto 20px;
+		}
+	}
+	.col {
+		display: flex;
+		flex-flow: row wrap;
+		&-2 {
+			& > * {
+				flex: 50%;
+				max-width: 50%;
+				padding-right: 40px;
+				@include max($bmobile) {
+					padding-right: 10px;
+				}
+				&:nth-of-type(2n) {
+					padding-left: 40px;
+					padding-right: 0px;
+					@include max($bmobile) {
+						padding-left: 10px;
+					}
+				}
+				&:nth-of-type(n + 3) {
+					padding-top: 40px;
+					@include max($bmobile) {
+						padding-top: 20px;
+					}
+				}
+				p {
+					text-align: left;
+				}
+			}
+		}
+		img {
+			display: block;
+			max-width: 100%;
+			margin: 0px auto;
+			@include max($bmobile) {
+				max-height: 38px;
+			}
+		}
+	}
+}

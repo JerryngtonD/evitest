@@ -1,0 +1,52 @@
+.tabs {
+	&-links {
+		display: flex;
+		flex-flow: row nowrap;
+		justify-content: space-between;
+		margin-bottom: 55px;
+		@include max($bmobile) {
+			margin-bottom: 25px;
+		}
+	}
+	&-link {
+		cursor: pointer;
+		position: relative;
+		@include text($fbold, 24px, $bg, 32px, none);
+		white-space: nowrap;
+		@include max($bmobile) {
+			font-size: 13px;
+			line-height: 22px;
+			&:after {
+				height: 3px;
+			}
+		}
+		&:after {
+			content: "";
+			position: absolute;
+			left: 0px;
+			top: 100%;
+			width: 0px;
+			height: 5px;
+			background-color: $bg;
+			@include transition("width", .3s, "easeInOutExpo");
+		}
+		@include min($btablet) {
+			&:hover {
+				&:after {
+					width: 100%;
+				}
+			}
+		}
+		&.active {
+			&:after {
+				width: 100%;
+			}
+		}
+	}
+	&-content {
+		display: none;
+		&.active {
+			display: block;
+		}
+	}
+}

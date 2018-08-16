@@ -1,0 +1,514 @@
+header {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: flex-start;
+	align-content: center;
+	align-items: center;
+	position: fixed;
+	left: 0px;
+	right: 0px;
+	top: 0px;
+	height: $header;
+	background-color: $bg;
+	padding-left: 40px;
+	padding-right: 40px;
+	z-index: 10;
+	&:before {
+		content: "";
+		position: absolute;
+		left: 0px;
+		right: 0px;
+		top: 0px;
+		bottom: 0px;
+		background-color: $bg;
+		z-index: 3;
+	}
+	@include max($btablet) {
+		height: $header_mobile;
+		&:before {
+			box-shadow: 0px 0px 21px rgba(0, 0, 0, 0.47);
+		}
+	}
+	.logo {
+		min-width: 226px;
+		max-width: 226px;
+		height: 55px;
+		background-image: url(../images/logo.png);
+		background-repeat: no-repeat;
+		background-position: 0px 0px;
+		background-size: 100% 100%;
+		z-index: 3;
+		@include max($btablet) {
+			min-width: 113px;
+			max-width: 113px;
+			height: 27px;
+			margin: auto;
+		}
+	}
+	nav {
+		z-index: 3;
+		@include max($btablet) {
+			display: flex;
+			flex-flow: column nowrap;
+			position: fixed;
+			left: 0px;
+			right: 0px;
+			top: 0px;
+			bottom: 0px;
+			background-color: $bg;
+			transform: translateY(-100%);
+			@include transition("all", .3s, "ease");
+			padding-top: $header_mobile;
+			z-index: 2;
+			span {
+				flex: 1;
+				display: flex;
+				flex-flow: row nowrap;
+				justify-content: center;
+				& + span {
+					border-top: 1px solid #420838;
+				}
+				a {
+					flex: 1;
+					display: flex;
+					flex-flow: row nowrap;
+					justify-content: center;
+					align-content: center;
+					align-items: center;
+				}
+			}
+		}
+		@include min($btablet) {
+			display: flex;
+			flex-flow: row wrap;
+			justify-content: space-between;
+			align-content: center;
+			align-items: center;
+			margin-left: 60px;
+			span {
+				width: 33.33%;
+				line-height: 38px;
+			}
+			a {
+				position: relative;
+				white-space: nowrap;
+				&:after {
+					content: "";
+					position: absolute;
+					left: 0px;
+					top: 100%;
+					width: 0px;
+					height: 2px;
+					background-color: $white;
+					@include transition("width", .3s, "easeInOutExpo");
+				}
+				&:hover {
+					&:after {
+						width: 100%;
+					}
+				}
+				&.active {
+					&:after {
+						width: 100%;
+					}
+				}
+			}
+		}
+		@include min($bwide) {
+			flex-flow: row nowrap;
+			justify-content: flex-start;
+			span {
+				& + span {
+					margin-left: 60px;
+				}
+			}
+		}
+		a {
+			@include text($fbold, 18px, $white, 26px, none);
+		}
+	}
+	.options {
+		display: flex;
+		flex-flow: row nowrap;
+		justify-content: flex-start;
+		align-content: center;
+		align-items: center;
+		position: relative;
+		margin-left: 55px;
+		z-index: 3;
+		@include max($btablet) {
+			position: absolute;
+			right: 20px;
+			margin-left: 0px;
+			@include transition("transform", 0.7s, "ease");
+			&.show {
+				transform: translateY(-200%);
+			}
+			&.hide {
+				transform: translateY(-200%) !important;
+			}
+			&.active {
+				justify-content: center;
+				left: 0px;
+				right: 0px;
+				top: $header_mobile;
+				height: 113px;
+				background-color: $bg;
+				z-index: 1;
+				transform: translateY(0);
+				&:before {
+					align-self: flex-start;
+					content: "";
+					width: 26px;
+					height: 17px;
+					background-image: url(../images/top.png);
+					background-repeat: no-repeat;
+					background-position: 0px 0px;
+					background-size: 100% 100%;
+					margin: 15px 35px 0px;
+					order: 2;
+				}
+				div {
+					&:first-of-type {
+						order: 1;
+					}
+					&:last-of-type {
+						order: 3;
+					}
+					& + div {
+						margin-left: 0px;
+					}
+					i {
+						width: 40px;
+						height: 40px;
+						margin: 0px auto 10px;
+					}
+					span {
+						display: block;
+						@include text($fbold, 12px, $white, 14px, none);
+						text-align: center;
+					}
+				}
+			}
+		}
+		@include max($bwide) {
+			right: 30px;
+		}
+		div {
+			position: relative;
+			&:first-of-type {
+				i {
+					&:after {
+						content: "";
+						display: block;
+						width: 5px;
+						height: 21px;
+						background-color: #d6bad2;
+						margin: auto 3px;
+						@include max($btablet) {
+							width: 3px;
+							height: 12px;
+							margin: auto 2px;
+						}
+					}
+				}
+			}
+			& + div {
+				margin-left: 15px;
+				@include max($btablet) {
+					margin-left: 8px;
+				}
+			}
+			@include min($btablet) {
+				&:hover {
+					span {
+						top: calc(100% + 15px);
+						opacity: 1;
+					}
+				}
+			}
+			i {
+				display: flex;
+				flex-flow: row nowrap;
+				justify-content: center;
+				align-content: center;
+				align-items: center;
+				cursor: pointer;
+				position: relative;
+				width: 50px;
+				height: 50px;
+				border-radius: 50%;
+				background-color: #ad75a4;
+				@include max($btablet) {
+					width: 29px;
+					height: 29px;
+				}
+				&:before {
+					content: "";
+					display: block;
+					width: 5px;
+					height: 21px;
+					background-color: #d6bad2;
+					margin: auto 3px;
+					@include max($btablet) {
+						width: 3px;
+						height: 12px;
+						margin: auto 2px;
+					}
+				}
+				&.active {
+					background-color: $red;
+					&:before {
+						background-color: $white;
+					}
+					&:after {
+						background-color: $white;
+					}
+				}
+			}
+			span {
+				@include max($btablet) {
+					display: none;
+				}
+				@include min($btablet) {
+					position: absolute;
+					left: calc(50% - 90px);
+					top: -100vh;
+					opacity: 0;
+					@include transition("opacity", .7s, "ease");
+					display: flex;
+					flex-flow: row nowrap;
+					justify-content: center;
+					align-content: center;
+					align-items: center;
+					width: 180px;
+					height: 75px;
+					border-radius: 20px;
+					background-color: $red;
+					@include text($freg, 16px, $white, 20px, none);
+					text-align: center;
+					filter: drop-shadow(0px 4px 13px rgba(53, 5, 45, 0.27));
+					&:before {
+						content: "";
+						display: block;
+						position: absolute;
+						top: -9px;
+						left: calc(50% - 7px);
+						width: 0px;
+						border-width: 0px 7px 9px;
+						border-style: solid;
+						border-color: $red transparent;
+					}
+				}
+			}
+		}
+	}
+	.menu {
+		cursor: pointer;
+		position: fixed;
+		left: 0px;
+		top: 0px;
+		width: 70px;
+		height: $header_mobile;
+		background-color: transparent;
+		margin-right: 0px;
+		z-index: 3;
+		@include transition("all", 0.3s, "ease");
+		@include min($btablet) {
+			display: none;
+		}
+		.patty {
+			width: 35px;
+			height: 4px;
+			margin: $header_mobile/2-1 auto;
+			background-color: $white;
+			border-radius: 2px;
+			@include transition("all", 0.3s, "ease");
+			&:before, &:after {
+				content: '';
+				position: absolute;
+				display: block;
+				width: 35px;
+				height: 4px;
+				background-color: $white;
+				@include transition("all", 0.3s, "ease");
+			}
+			&:before {
+				top: $header_mobile/2-1-11;
+			}
+			&:after {
+				top: $header_mobile/2-1+11;
+			}
+		}
+	}
+	&.active {
+		.menu {
+			.patty {
+				background: none !important;
+				&:after {
+					top: $header_mobile/2-1 !important;
+					background: $white !important;
+					transform: rotate(45deg);
+				}
+				&:before {
+					top: $header_mobile/2-1 !important;
+					background: $white !important;
+					transform: rotate(-45deg);
+				}
+			}
+		}
+		nav {
+			@include max($bdesktop) {
+				transform: translateY(0);
+			}
+		}
+	}
+	.products-list {
+		display: flex;
+		flex-flow: row nowrap;
+		justify-content: flex-start;
+		align-content: center;
+		align-items: center;
+		position: absolute;
+		left: 0px;
+		right: 0px;
+		top: $header;
+		height: 247px;
+		overflow-x: auto;
+		overflow-y: hidden;
+		background-color: $bg;
+		z-index: 1;
+		transform: translateY(-100%);
+		@include transition("all", 0.3s, "ease");
+		&.active {
+			transform: translateY(0);
+			z-index: 2;
+		}
+		@include max($btablet) {
+			display: none;
+		}
+		.sidebar & {
+			&.activated {
+				a {
+					text-align: center;
+					padding-left: 20px;
+					padding-right: 20px;
+					margin-left: auto;
+					margin-right: auto;
+					&.active {
+						span {
+							position: relative;
+							display: inline-block;
+							&:after {
+								content: "";
+								position: absolute;
+								left: 0px;
+								top: 100%;
+								width: 100%;
+								height: 2px;
+								background-color: $white;
+							}
+						}
+					}
+				}
+				@include max($btablet) {
+					display: flex !important;
+					justify-content: flex-start;
+					align-items: flex-start;
+					top: $header_mobile;
+					height: 150px;
+					padding-top: 20px;
+					transform: translateY(0);
+					a {
+						text-align: center;
+						padding-left: 20px;
+						padding-right: 20px;
+						margin-left: auto;
+						margin-right: auto;
+						img {
+							max-width: none;
+							height: 80px;
+						}
+						span {
+							font-size: 10px;
+							padding-top: 7px;
+						}
+						.btn {
+							display: none;
+						}
+						&.active {
+							span {
+								position: relative;
+								display: inline-block;
+								padding-bottom: 0px;
+								&:after {
+									content: "";
+									position: absolute;
+									left: 0px;
+									top: 100%;
+									width: 100%;
+									height: 4px;
+									background-color: $white;
+								}
+							}
+						}
+					}
+				}
+				@include min($btablet) {
+					flex-flow: column nowrap;
+					justify-content: flex-start;
+					right: auto;
+					bottom: 0px;
+					width: 455px;
+					height: calc(100vh - #{$header});
+					overflow-x: hidden;
+					overflow-y: auto;
+					transform: translateY(0);
+					a {
+						padding-top: 20px;
+						padding-bottom: 20px;
+						margin-top: auto;
+						margin-bottom: auto;
+					}
+				}
+			}
+		}
+		a {
+			padding-left: 20px;
+			padding-right: 20px;
+			margin-left: auto;
+			margin-right: auto;
+			&:hover {
+				img {
+					box-shadow: 0px 0px 30px rgba(228, 20, 193, 1);
+					transform: scale(1.05);
+				}
+			}
+			&.active {
+				img {
+					box-shadow: 0px 0px 30px rgba(228, 20, 193, 1);
+					transform: scale(1.05);
+				}
+			}
+			img {
+				display: block;
+				max-width: 100%;
+				margin: 0px auto;
+				transform: scale(1);
+				@include transition("all", 0.7s, "ease");
+			}
+			span {
+				display: block;
+				@include text($freg, 18px, $white, 24px, none);
+				text-align: center;
+				white-space: nowrap;
+				padding-top: 17px;
+				margin-bottom: 12px;
+			}
+			.btn {
+				@include btn(120px, 27px);
+				margin: 0px auto;
+			}
+		}
+	}
+}

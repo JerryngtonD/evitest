@@ -1,0 +1,101 @@
+.btn {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: center;
+	align-content: center;
+	align-items: center;
+	position: relative;
+	cursor: pointer;
+	overflow: hidden;
+	background-color: transparent;
+	border: 0px;
+	border-radius: 42px;
+	@include text($fbold, 24px, $white, 29px, none);
+	text-align: center;
+	@include max($bmobile) {
+		font-size: 18px;
+		line-height: 22px;
+	}
+	&:before {
+		content: '';
+		position: absolute;
+		left: 0px;
+		right: 0px;
+		top: 0px;
+		bottom: 0px;
+		border: 2px solid $white;
+		border-radius: 42px;
+	}
+	@include min($btablet) {
+		&:hover {
+			em {
+				width: 100%;
+			}
+		}
+		a:hover > & {
+			em {
+				width: 100%;
+			}
+		}
+	}
+	@include max($btablet) {
+		&-hover {
+			&:hover {
+				em {
+					width: 100%;
+				}
+			}
+			&:active {
+				em {
+					width: 100%;
+				}
+			}
+		}
+	}
+	a.active > & {
+		em {
+			width: 100%;
+		}
+	}
+	&-dark {
+		color: $bg;
+		&:before {
+			border-color: $bg;
+		}
+		em {
+			background-color: $bg !important;
+			&:before {
+				color: $white !important;
+			}
+		}
+	}
+	&-small {
+		font-size: 16px;
+		line-height: 20px;
+	}
+	em {
+		position: absolute;
+		left: 0px;
+		top: 0px;
+		width: 0px;
+		height: 100%;
+		overflow: hidden;
+		@include transition("width", 0.7s, "ease-in-out");
+		background-color: $white;
+		z-index: 2;
+		&:before {
+			display: flex;
+			flex-flow: row nowrap;
+			justify-content: center;
+			align-content: center;
+			align-items: center;
+			content: attr(data-text);
+			position: absolute;
+			left: 0px;
+			top: 0px;
+			height: 100%;
+			color: $bg;
+			white-space: nowrap;
+		}
+	}
+}

@@ -1,0 +1,80 @@
+.products {
+	flex: 1;
+	background-color: $white;
+	padding-left: 475px;
+	padding-right: 20px;
+	@include max($btablet) {
+		padding-left: 20px;
+		padding-top: 150px;
+	}
+	.img {
+		display: block;
+		max-width: 100%;
+		margin: 50px auto;
+		@include max($bmobile) {
+			margin: 20px auto;
+		}
+	}
+	@include max($bmobile) {
+		.content {
+			padding-left: 0px;
+			padding-right: 0px;
+		}
+	}
+	h1 {
+		color: $bg;
+		text-align: center;
+	}
+	p {
+		color: $bg;
+		text-align: center;
+	}
+	.tabs {
+		margin-top: 30px;
+	}
+	.btn {
+		@include btn(120px, 27px);
+		margin: 20px auto 50px;
+		@include max($bmobile) {
+			margin: 15px auto 20px;
+		}
+	}
+	.col {
+		display: flex;
+		flex-flow: row wrap;
+		&-2 {
+			& > * {
+				flex: 50%;
+				max-width: 50%;
+				padding-right: 40px;
+				@include max($bmobile) {
+					padding-right: 10px;
+				}
+				&:nth-of-type(2n) {
+					padding-left: 40px;
+					padding-right: 0px;
+					@include max($bmobile) {
+						padding-left: 10px;
+					}
+				}
+				&:nth-of-type(n + 3) {
+					padding-top: 40px;
+					@include max($bmobile) {
+						padding-top: 20px;
+					}
+				}
+				p {
+					text-align: left;
+				}
+			}
+		}
+		img {
+			display: block;
+			max-width: 100%;
+			margin: 0px auto;
+			@include max($bmobile) {
+				max-height: 38px;
+			}
+		}
+	}
+}

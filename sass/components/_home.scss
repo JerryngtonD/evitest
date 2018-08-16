@@ -1,0 +1,225 @@
+.home {
+	flex: 1;
+	display: flex;
+	flex-flow: row nowrap;
+	min-height: calc(100vh - #{$header});
+	@include max($btablet) {
+		flex-flow: row wrap;
+		min-height: 1px;
+	}
+	& > a {
+		flex: 2.5;
+		display: flex;
+		flex-flow: column nowrap;
+		justify-content: flex-end;
+		align-content: center;
+		align-items: center;
+		position: relative;
+		overflow: hidden;
+		@include text($fbold, 24px, $bg, 29px, none);
+		text-align: center;
+		z-index: 1;
+		@include max($bmobile) {
+			font-size: 14px;
+			line-height: 19px;
+		}
+		&:before {
+			content: "";
+			position: absolute;
+			left: 0px;
+			right: 0px;
+			top: 0px;
+			bottom: 0px;
+			background-repeat: no-repeat;
+			background-position: center top;
+			background-size: cover;
+			@include transition("all", 3s, "ease");
+		}
+		&:first-of-type {
+			&:before {
+				background-image: url(../images/main_left.jpg);
+			}
+			i {
+				&:after {
+					content: "";
+					display: block;
+					width: 16px;
+					height: 63px;
+					background-color: $white;
+					margin: auto 10px;
+					@include max($bmobile) {
+						width: 10px;
+						height: 38px;
+						margin: auto 6px;
+					}
+				}
+			}
+		}
+		&:last-of-type {
+			&:before {
+				background-image: url(../images/main_right.jpg);
+			}
+		}
+		@include min($btablet) {
+			&:hover {
+				&:before {
+					transform: scale(1.1);
+				}
+			}
+		}
+		@include max($btablet) {
+			flex: 50%;
+			width: 50%;
+			height: 55%;
+			&:first-of-type {
+				order: 1;
+			}
+			&:last-of-type {
+				order: 2;
+			}
+		}
+		i {
+			display: flex;
+			flex-flow: row nowrap;
+			justify-content: center;
+			align-content: center;
+			align-items: center;
+			position: relative;
+			width: 150px;
+			height: 150px;
+			border-radius: 50%;
+			background-color: $red;
+			margin: 0px auto;
+			@include max($bmobile) {
+				width: 89px;
+				height: 89px;
+			}
+			&:before {
+				content: "";
+				display: block;
+				width: 16px;
+				height: 63px;
+				background-color: $white;
+				margin: auto 10px;
+				@include max($bmobile) {
+					width: 10px;
+					height: 38px;
+					margin: auto 6px;
+				}
+			}
+		}
+		span {
+			position: relative;
+			display: block;
+			margin-top: 12px;
+			margin-bottom: 50px;
+		}
+		em {
+			position: absolute;
+			left: 10px;
+			right: 10px;
+			bottom: 10px;
+			@include text($freg, 11px, $bg, 11px, none);
+			text-align: left;
+			@include max($bmobile) {
+				font-size: 9px;
+				line-height: 9px;
+			}
+		}
+	}
+	div {
+		flex: 1;
+		display: flex;
+		flex-flow: column nowrap;
+		justify-content: flex-end;
+		align-content: center;
+		align-items: center;
+		position: relative;
+		width: 420px;
+		z-index: 2;
+		@include max($bdesktop) {
+			width: 230px;
+		}
+		@include max($btablet) {
+			flex: 1;
+			justify-content: center;
+			width: 100%;
+			height: 45%;
+			min-height: 250px;
+			background-image: none;
+			padding-top: 50px;
+			order: 3;
+		}
+		@include max($bmobile) {
+			padding-top: 20px;
+		}
+		i {
+			flex: 1;
+			position: relative;
+			width: 100%;
+			min-height: 337px;
+			max-height: 750px;
+			@include max($bdesktop) {
+				min-height: 260px;
+			}
+			@include max($btablet) {
+				flex: auto;
+				display: none;
+			}
+			img {
+				max-width: 100%;
+				position: absolute;
+				left: 0px;
+				right: 0px;
+				top: 0px;
+				bottom: 0px;
+				margin: auto;
+			}
+			
+		}
+		& > img {
+			position: relative;
+			display: block;
+			box-shadow: 0px 10px 21px rgba(0, 0, 0, 0.47);
+			@include min($btablet) {
+				flex: none;
+				min-width: 135%;
+				max-width: 135%;
+			}
+			@include max($bmobile) {
+				width: 280px;
+			}
+		}
+		span {
+			flex: 1;
+			display: flex;
+			flex-flow: row nowrap;
+			justify-content: center;
+			align-content: center;
+			align-items: center;
+			position: relative;
+			width: 100%;
+			min-height: 80px;
+			padding-left: 20px;
+			padding-right: 20px;
+			@include min($btablet) {
+				flex: 0.5;
+				background-color: $bg;
+			}
+			.btn {
+				@include btn(227px, 83px);
+				@include max($bdesktop) {
+					@include btn(200px, 60px);
+				}
+				@include max($btablet) {
+					em {
+						width: 100%;
+					}
+				}
+				@include max($bmobile) {
+					@include btn(157px, 49px);
+				}
+			}
+		}
+	}
+}
